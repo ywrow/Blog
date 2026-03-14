@@ -1,0 +1,94 @@
+/* ================= 雷达图基础容器 ================= */
+#radarChart {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    /* 确保容器在黑暗模式下背景透明，避免突兀的白块 */
+    background-color: transparent; 
+}
+
+/* ================= 黑暗模式适配 (文字变白) ================= */
+
+/* 针对 SVG 渲染模式 (默认) */
+[data-user-color-scheme="dark"] #radarChart text {
+    fill: #ffffff !important;
+}
+
+/* 针对 Canvas 渲染模式 (如果配置了 renderer: 'canvas') */
+[data-user-color-scheme="dark"] #radarChart .echarts-text {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* 坐标轴标签、图例文字 */
+[data-user-color-scheme="dark"] .echarts-axis-label,
+[data-user-color-scheme="dark"] .echarts-legend-text {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* ================= 提示框 (Tooltip) 样式修正 ================= */
+
+/* 1. 修正位置偏移问题 */
+/* ECharts 的 tooltip 默认是 absolute 定位，有时会受到父容器 margin/padding 影响 */
+#radarChart .echarts-tooltip {
+    /* 强制重置一些可能导致偏移的属性 */
+    left: auto !important;
+    top: auto !important;
+    /* 确保 z-index 足够高，不被遮挡 */
+    z-index: 9999 !important;
+}
+
+/* 2. 提示框内部内容样式 */
+#radarChart .echarts-tooltip-content {
+    /* 增加一点内边距，让内容不贴边 */
+    padding: 10px 15px !important;
+    /* 确保文字颜色在浅色背景下是黑色的 (默认) */
+    color: #333 !important; 
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* 黑暗模式下的提示框样式 */
+[data-user-color-scheme="dark"] #radarChart .echarts-tooltip-content {
+    background-color: rgba(50, 50, 50, 0.95) !important; /* 深色半透明背景 */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important; /* 整体文字白色 */
+}
+
+/* 3. 特殊格式颜色控制：[(blue)类型 (white/black)数值] */
+
+/* 假设 JS 生成的 HTML 结构包含特定的 class 或 span，这里做通用样式 */
+/* 如果你的 JS 输出了 <span style="color: blue">思维</span>，CSS 会保留它 */
+/* 如果需要强制控制： */
+
+/* 类型名称 (蓝色) - 无论黑白模式都保持蓝色，或者在黑暗模式下调整为亮蓝 */
+.echarts-tooltip-item-name {
+    color: #2196F3 !important; /* 明亮的蓝色 */
+    font-weight: bold;
+}
+
+/* 黑暗模式下，如果蓝色太暗，可以调整为天蓝色 */
+[data-user-color-scheme="dark"] .echarts-tooltip-item-name {
+    color: #64B5F6 !important; 
+}
+
+/* 数值部分 (自动适配) */
+/* 默认浅色背景下为黑色 */
+.echarts-tooltip-item-value {
+    color: #333333 !important;
+    font-weight: bold;
+}
+
+/* 黑暗模式下数值变为白色 */
+[data-user-color-scheme="dark"] .echarts-tooltip-item-value {
+    color: #ffffff !important;
+}
+
+/* 如果 JS 是直接拼接字符串没有 class，依靠上下文继承颜色即可 */
+/* 下面的规则确保 tooltip 里的强标签不会被意外覆盖 */
+#radarChart .echarts-tooltip-content strong {
+    font-weight: bold;
+}
