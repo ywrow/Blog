@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/ywrow1.png">
-  <link rel="icon" href="/img/ywrow.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/photoes/ywrow1.png">
+  <link rel="icon" href="/img/photoes/ywrow.png">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -373,7 +373,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/16/ABC449C-Comfortable-Distance/" target="_self">
         <div>
-          大意 给定字符串 SSS 和整数 L,RL, RL,R，求满足 Si=SjS_i=S_jSi​=Sj​ 且 L≤j−i≤RL \le j-i \le RL≤j−i≤R 的下标对 (i,j)(i,j)(i,j) 数量。  思路 暴力枚举 O(N2)O(N^2)O(N2) 会超时。利用字符集仅 26 个的特性，将每种字符的下标单独提取。 问题转化为在多个有序数组中，统计差值在 [L,R][L, R]
+          大意给定字符串 $S$ 和整数 $L, R$，求满足 $S_i&#x3D;S_j$ 且 $L \le j-i \le R$ 的下标对 $(i,j)$ 数量。 思路暴力枚举 $O(N^2)$ 会超时。利用字符集仅 26 个的特性，将每种字符的下标单独提取。 问题转化为在多个有序数组中，统计差值在 $[L, R]$ 内的数对。对于每个右端点，合法左端点区间随其单调右移，使用双指针维护窗口 $[l, r
         </div>
       </a>
 
@@ -413,7 +413,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/15/ABC449D-Make-Target-2/" target="_self">
         <div>
-          题目大意 给定矩形区域，点 (x,y)(x,y)(x,y) 颜色由 k=max⁡(∣x∣，∣y∣)k=\max(|x|，|y|)k=max(∣x∣，∣y∣) 决定：kkk 为偶数时为黑，为奇数时白。求区域内黑色点数。  思路 颜色由 k=max⁡(∣x∣,∣y∣)k=\max(|x|,|y|)k=max(∣x∣,∣y∣) 的奇偶性决定，kkk 为偶数时点是黑色。我们将图形看作一层层套在一起的正方
+          题目大意给定矩形区域，点 $(x,y)$ 颜色由 $k&#x3D;\max(|x|，|y|)$ 决定：$k$ 为偶数时为黑，为奇数时白。求区域内黑色点数。 思路颜色由 $k&#x3D;\max(|x|,|y|)$ 的奇偶性决定，$k$ 为偶数时点是黑色。我们将图形看作一层层套在一起的正方形环，第 $i$ 环就是边长范围从 $-i$ 到 $i$ 的大正方形区域，扣除掉内部从 $-(i-1)$ 到 $
         </div>
       </a>
 
@@ -453,7 +453,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/15/ABC448E-Simple-Division/" target="_self">
         <div>
-          题意大意 给定游程编码表示的整数 NNN 和整数 MMM，游标编码即由 KKK 组 (ci,li)(c_i, l_i)(ci​,li​) 描述，表示数字 cic_ici​ 重复 lil_ili​ 次，求 ⌊NM⌋ mod 10007\left\lfloor \frac{N}{M} \right\rfloor \bmod 10007⌊MN​⌋mod10007。 由于 lil_ili​ 可达 109
+          题意大意给定游程编码表示的整数 $N$ 和整数 $M$，游标编码即由 $K$ 组 $(c_i, l_i)$ 描述，表示数字 $c_i$ 重复 $l_i$ 次，求 $\left\lfloor \frac{N}{M} \right\rfloor \bmod 10007$。由于 $l_i$ 可达 $10^9$，所以无法直接构造 $N$。 解题思路维护 $N \bmod (M \times 10007)$
         </div>
       </a>
 
