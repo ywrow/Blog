@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>跳转中...</p>
+    <script>
+        // 1. 定义你的图片列表
+        // 请直接在这里修改或添加你的图片路径
+        const images = [
+            "/photos/gen/1.jpg",
+            "/photos/gen/2.jpg",
+            "/photos/gen/3.jpg",
+            "/photos/gen/4.jpg",
+            "/photos/gen/5.jpg",
+            "/photos/gen/6.png"
+            // 添加更多图片...
+        ];
+        // 2. 随机选择逻辑
+        if (images.length > 0) {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const targetUrl = images[randomIndex];
+            // 3. 执行跳转 (使用 replace 以免用户点击后退按钮回到这个过渡页)
+            window.location.replace(targetUrl);
+        } else {
+            document.body.innerHTML = "<p>错误：未找到图片列表。</p>";
+        }
+    </script>
+</body>
