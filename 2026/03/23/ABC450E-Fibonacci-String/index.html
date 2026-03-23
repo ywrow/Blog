@@ -19,15 +19,15 @@
   <meta name="author" content="ywrow">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解：ABC450E-Fibonacci String核心思路这道题要处理长度为 $10^{18}$ 的字符串，直接构造肯定不行。但仔细观察生成规则 $S_i &#x3D; S_{i-1} + S_{i-2}$，发现字符串长度的增长符合斐波那契数列。 1. 长度极长斐波那契数列增长是指数级的。即使 $|X|, |Y|$ 只有 1，大概不到 90 项，长度就会超过 $10^{18}$。这意味着对于任">
+    <meta name="description" content="题解：ABC450E-Fibonacci String 思路 这道题要处理长度为 $10^{18}$ 的字符串，直接构造肯定不行。但仔细观察生成规则 $S_i &#x3D; S_{i-1} + S_{i-2}$，发现字符串长度的增长符合斐波那契数列。 1. 长度极长 斐波那契数列增长是指数级的。即使 $|X|, |Y|$ 只有 1，大概不到 90 项，长度就会超过 $10^{18}$。 这意味着对于任何 $">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ABC450E Fibonacci String">
 <meta property="og:url" content="https://ywrow.github.io/2026/03/23/ABC450E-Fibonacci-String/index.html">
 <meta property="og:site_name" content="Lins&#39; Blog">
-<meta property="og:description" content="题解：ABC450E-Fibonacci String核心思路这道题要处理长度为 $10^{18}$ 的字符串，直接构造肯定不行。但仔细观察生成规则 $S_i &#x3D; S_{i-1} + S_{i-2}$，发现字符串长度的增长符合斐波那契数列。 1. 长度极长斐波那契数列增长是指数级的。即使 $|X|, |Y|$ 只有 1，大概不到 90 项，长度就会超过 $10^{18}$。这意味着对于任">
+<meta property="og:description" content="题解：ABC450E-Fibonacci String 思路 这道题要处理长度为 $10^{18}$ 的字符串，直接构造肯定不行。但仔细观察生成规则 $S_i &#x3D; S_{i-1} + S_{i-2}$，发现字符串长度的增长符合斐波那契数列。 1. 长度极长 斐波那契数列增长是指数级的。即使 $|X|, |Y|$ 只有 1，大概不到 90 项，长度就会超过 $10^{18}$。 这意味着对于任何 $">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-23T06:43:51.000Z">
-<meta property="article:modified_time" content="2026-03-23T07:09:57.514Z">
+<meta property="article:modified_time" content="2026-03-23T07:11:36.952Z">
 <meta property="article:author" content="ywrow">
 <meta property="article:tag" content="solution">
 <meta name="twitter:card" content="summary_large_image">
@@ -304,19 +304,19 @@
             <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-search"></i>
-                <span>Suchen</span>
+                <span>Search</span>
               </div>
             </a>
           </div>
         
         
           <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
-               data-label-light="Hell"
-               data-label-dark="Dunkel">
+               data-label-light="Light"
+               data-label-dark="Dark">
             <a href="javascript:;" aria-label="Color Toggle">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
-                <span id="mobile-color-toggle-label">Dunkel</span>
+                <span id="mobile-color-toggle-label">Dark</span>
               </div>
             </a>
           </div>
@@ -358,7 +358,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k wörter
+          1.9k words
         
       </span>
     
@@ -369,7 +369,7 @@
         
         
         
-          25 minuten
+          25 mins
         
       </span>
     
@@ -413,21 +413,31 @@
             
               <div class="markdown-body">
                 
-                <h1 id="题解：ABC450E-Fibonacci-String"><a href="#题解：ABC450E-Fibonacci-String" class="headerlink" title="题解：ABC450E-Fibonacci String"></a>题解：ABC450E-Fibonacci String</h1><h2 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h2><p>这道题要处理长度为 $10^{18}$ 的字符串，直接构造肯定不行。但仔细观察生成规则 $S_i &#x3D; S_{i-1} + S_{i-2}$，发现字符串长度的增长符合<strong>斐波那契数列</strong>。</p>
-<h3 id="1-长度极长"><a href="#1-长度极长" class="headerlink" title="1. 长度极长"></a>1. 长度极长</h3><p>斐波那契数列增长是指数级的。即使 $|X|, |Y|$ 只有 1，大概不到 90 项，长度就会超过 $10^{18}$。<br>这意味着对于任何 $k \ge 90$，字符串 $S_k$ 的前 $10^{18}$ 个字符的结构是完全一样的。<br>题目问的是 $S_{10^{18}}$，其实我们只需要算到第一个长度超过 $10^{18}$ 的那一层（记为 <code>max_k</code>），后面的层数在查询范围内等价于这一层。</p>
-<h3 id="2-预处理信息"><a href="#2-预处理信息" class="headerlink" title="2. 预处理信息"></a>2. 预处理信息</h3><p>我们可以先递推预处理出前 90 层左右的信息：</p>
+                <h1 id="题解：abc450e-fibonacci-string">题解：ABC450E-Fibonacci String</h1>
+<h2 id="思路">思路</h2>
+<p>这道题要处理长度为 $10^{18}$ 的字符串，直接构造肯定不行。但仔细观察生成规则 $S_i = S_{i-1} + S_{i-2}$，发现字符串长度的增长符合<strong>斐波那契数列</strong>。</p>
+<h3 id="1-长度极长">1. 长度极长</h3>
+<p>斐波那契数列增长是指数级的。即使 $|X|, |Y|$ 只有 1，大概不到 90 项，长度就会超过 $10^{18}$。<br>
+这意味着对于任何 $k \ge 90$，字符串 $S_k$ 的前 $10^{18}$ 个字符的结构是完全一样的。<br>
+题目问的是 $S_{10^{18}}$，其实我们只需要算到第一个长度超过 $10^{18}$ 的那一层（记为 <code>max_k</code>），后面的层数在查询范围内等价于这一层。</p>
+<h3 id="2-预处理信息">2. 预处理信息</h3>
+<p>我们可以先递推预处理出前 90 层左右的信息：</p>
 <ul>
 <li><code>len[k]</code>：第 $k$ 层的长度。注意如果超过 $10^{18}$ 就直接存成一个很大的数（比如 $2 \times 10^{18}$），防止 <code>long long</code> 溢出。</li>
 <li><code>cnt[k][c]</code>：第 $k$ 层中字符 <code>c</code> 出现的总次数。递推式很简单：<code>cnt[k][c] = cnt[k-1][c] + cnt[k-2][c]</code>。</li>
 </ul>
-<h3 id="3-递归查询"><a href="#3-递归查询" class="headerlink" title="3. 递归查询"></a>3. 递归查询</h3><p>要求 $[L, R]$ 区间内字符 $C$ 的个数，可以转化为前缀和相减：<code>f(k, r, c) - f(k, l-1, c)</code>。<br>其中 <code>f(k, l, c)</code> 表示在第 $k$ 层字符串的前 <code>limit</code> 个字符中，<code>c</code> 出现了多少次。</p>
-<p>利用 $S_k &#x3D; S_{k-1} + S_{k-2}$ 的结构递归：</p>
+<h3 id="3-递归查询">3. 递归查询</h3>
+<p>要求 $[L, R]$ 区间内字符 $C$ 的个数，可以转化为前缀和相减：<code>f(k, r, c) - f(k, l-1, c)</code>。<br>
+其中 <code>f(k, l, c)</code> 表示在第 $k$ 层字符串的前 <code>limit</code> 个字符中，<code>c</code> 出现了多少次。</p>
+<p>利用 $S_k = S_{k-1} + S_{k-2}$ 的结构递归：</p>
 <ol>
-<li><strong>边界</strong>：如果 $k&#x3D;1$ 或 $k&#x3D;2$，直接遍历原始字符串 $X$ 或 $Y$ 统计前 <code>l</code> 个。</li>
+<li><strong>边界</strong>：如果 $k=1$ 或 $k=2$，直接遍历原始字符串 $X$ 或 $Y$ 统计前 <code>l</code> 个。</li>
 <li><strong>在左半边</strong>：如果 <code>l</code> $\le$ <code>len[k-1]</code>，说明目标全在 $S_{k-1}$ 里，递归 <code>f(k-1, l, c)</code>。</li>
-<li><strong>跨越两边</strong>：如果 <code>l</code> &gt; <code>len[k-1]</code>，说明包含了完整的 $S_{k-1}$ 和 $S_{k-2}$ 的一部分。<br>答案 &#x3D; ($S_{k-1}$ 中 <code>c</code> 的总数) + <code>f(k-2, limit - len[k-1], c)</code>。</li>
+<li><strong>跨越两边</strong>：如果 <code>l</code> &gt; <code>len[k-1]</code>，说明包含了完整的 $S_{k-1}$ 和 $S_{k-2}$ 的一部分。<br>
+答案 = ($S_{k-1}$ 中 <code>c</code> 的总数) + <code>f(k-2, limit - len[k-1], c)</code>。</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br>string x,y;<br><span class="hljs-type">int</span> q;<br>ll len[<span class="hljs-number">95</span>],cnt[<span class="hljs-number">95</span>][<span class="hljs-number">26</span>];<br><span class="hljs-type">int</span> t;<br><span class="hljs-function">ll <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">int</span> k,ll l,<span class="hljs-type">int</span> c)</span></span>&#123;<br>	<span class="hljs-keyword">if</span>(l&lt;=<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span>(k==<span class="hljs-number">1</span>)&#123;<br>		ll a=<span class="hljs-number">0</span>;<br>		ll m=<span class="hljs-built_in">min</span>(l,len[<span class="hljs-number">1</span>]);<br>		<span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">0</span>;i&lt;m;i++)<span class="hljs-keyword">if</span>(x[i]-<span class="hljs-string">&#x27;a&#x27;</span>==c)a++;<br>		<span class="hljs-keyword">return</span> a;<br>	&#125;<br>	<span class="hljs-keyword">if</span>(k==<span class="hljs-number">2</span>)&#123;<br>		ll a=<span class="hljs-number">0</span>;<br>		ll m=<span class="hljs-built_in">min</span>(l,len[<span class="hljs-number">2</span>]);<br>		<span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">0</span>;i&lt;m;i++)<span class="hljs-keyword">if</span>(y[i]-<span class="hljs-string">&#x27;a&#x27;</span>==c)a++;<br>		<span class="hljs-keyword">return</span> a;<br>	&#125;<br>	<span class="hljs-keyword">if</span>(l&lt;=len[k<span class="hljs-number">-1</span>])<span class="hljs-keyword">return</span> <span class="hljs-built_in">f</span>(k<span class="hljs-number">-1</span>,l,c);<br>	<span class="hljs-keyword">return</span> cnt[k<span class="hljs-number">-1</span>][c]+<span class="hljs-built_in">f</span>(k<span class="hljs-number">-2</span>,l-len[k<span class="hljs-number">-1</span>],c);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	cin&gt;&gt;x&gt;&gt;y&gt;&gt;q;<br>	len[<span class="hljs-number">1</span>]=x.<span class="hljs-built_in">size</span>();<br>	len[<span class="hljs-number">2</span>]=y.<span class="hljs-built_in">size</span>();<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">26</span>;i++)&#123;<br>		cnt[<span class="hljs-number">1</span>][i]=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c:x)<span class="hljs-keyword">if</span>(c-<span class="hljs-string">&#x27;a&#x27;</span>==i)cnt[<span class="hljs-number">1</span>][i]++;<br>		cnt[<span class="hljs-number">2</span>][i]=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c:y)<span class="hljs-keyword">if</span>(c-<span class="hljs-string">&#x27;a&#x27;</span>==i)cnt[<span class="hljs-number">2</span>][i]++;<br>	&#125;<br>	t=<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">while</span>(len[t]&lt;<span class="hljs-number">2e18</span>)&#123;<br>		<span class="hljs-type">int</span> n=t<span class="hljs-number">+1</span>;<br>		len[n]=len[t]+len[t<span class="hljs-number">-1</span>];<br>		<span class="hljs-keyword">if</span>(len[n]&lt;<span class="hljs-number">0</span>)len[n]=<span class="hljs-number">2e18</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">26</span>;i++)cnt[n][i]=cnt[t][i]+cnt[t<span class="hljs-number">-1</span>][i];<br>		t++;<br>	&#125;<br>	<span class="hljs-type">int</span> s=t<span class="hljs-number">-1</span>;<br>	<span class="hljs-keyword">while</span>(s&gt;<span class="hljs-number">2</span>&amp;&amp;len[s<span class="hljs-number">-1</span>]&gt;=<span class="hljs-number">1e18</span>)s--;<br>	<span class="hljs-keyword">while</span>(len[s]&lt;<span class="hljs-number">1e18</span>)s++; <br>	<span class="hljs-keyword">while</span>(q--)&#123;<br>		ll l,r;<br>		<span class="hljs-type">char</span> c;<br>		cin&gt;&gt;l&gt;&gt;r&gt;&gt;c;<br>		cout&lt;&lt;<span class="hljs-built_in">f</span>(s,r,c-<span class="hljs-string">&#x27;a&#x27;</span>)-<span class="hljs-built_in">f</span>(s,l<span class="hljs-number">-1</span>,c-<span class="hljs-string">&#x27;a&#x27;</span>)&lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Code">Code</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br>string x,y;<br><span class="hljs-type">int</span> q;<br>ll len[<span class="hljs-number">95</span>],cnt[<span class="hljs-number">95</span>][<span class="hljs-number">26</span>];<br><span class="hljs-type">int</span> t;<br><span class="hljs-function">ll <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">int</span> k,ll l,<span class="hljs-type">int</span> c)</span></span>&#123;<br>	<span class="hljs-keyword">if</span>(l&lt;=<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span>(k==<span class="hljs-number">1</span>)&#123;<br>		ll a=<span class="hljs-number">0</span>;<br>		ll m=<span class="hljs-built_in">min</span>(l,len[<span class="hljs-number">1</span>]);<br>		<span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">0</span>;i&lt;m;i++)<span class="hljs-keyword">if</span>(x[i]-<span class="hljs-string">&#x27;a&#x27;</span>==c)a++;<br>		<span class="hljs-keyword">return</span> a;<br>	&#125;<br>	<span class="hljs-keyword">if</span>(k==<span class="hljs-number">2</span>)&#123;<br>		ll a=<span class="hljs-number">0</span>;<br>		ll m=<span class="hljs-built_in">min</span>(l,len[<span class="hljs-number">2</span>]);<br>		<span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">0</span>;i&lt;m;i++)<span class="hljs-keyword">if</span>(y[i]-<span class="hljs-string">&#x27;a&#x27;</span>==c)a++;<br>		<span class="hljs-keyword">return</span> a;<br>	&#125;<br>	<span class="hljs-keyword">if</span>(l&lt;=len[k<span class="hljs-number">-1</span>])<span class="hljs-keyword">return</span> <span class="hljs-built_in">f</span>(k<span class="hljs-number">-1</span>,l,c);<br>	<span class="hljs-keyword">return</span> cnt[k<span class="hljs-number">-1</span>][c]+<span class="hljs-built_in">f</span>(k<span class="hljs-number">-2</span>,l-len[k<span class="hljs-number">-1</span>],c);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	cin&gt;&gt;x&gt;&gt;y&gt;&gt;q;<br>	len[<span class="hljs-number">1</span>]=x.<span class="hljs-built_in">size</span>();<br>	len[<span class="hljs-number">2</span>]=y.<span class="hljs-built_in">size</span>();<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">26</span>;i++)&#123;<br>		cnt[<span class="hljs-number">1</span>][i]=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c:x)<span class="hljs-keyword">if</span>(c-<span class="hljs-string">&#x27;a&#x27;</span>==i)cnt[<span class="hljs-number">1</span>][i]++;<br>		cnt[<span class="hljs-number">2</span>][i]=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c:y)<span class="hljs-keyword">if</span>(c-<span class="hljs-string">&#x27;a&#x27;</span>==i)cnt[<span class="hljs-number">2</span>][i]++;<br>	&#125;<br>	t=<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">while</span>(len[t]&lt;<span class="hljs-number">2e18</span>)&#123;<br>		<span class="hljs-type">int</span> n=t<span class="hljs-number">+1</span>;<br>		len[n]=len[t]+len[t<span class="hljs-number">-1</span>];<br>		<span class="hljs-keyword">if</span>(len[n]&lt;<span class="hljs-number">0</span>)len[n]=<span class="hljs-number">2e18</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">26</span>;i++)cnt[n][i]=cnt[t][i]+cnt[t<span class="hljs-number">-1</span>][i];<br>		t++;<br>	&#125;<br>	<span class="hljs-type">int</span> s=t<span class="hljs-number">-1</span>;<br>	<span class="hljs-keyword">while</span>(s&gt;<span class="hljs-number">2</span>&amp;&amp;len[s<span class="hljs-number">-1</span>]&gt;=<span class="hljs-number">1e18</span>)s--;<br>	<span class="hljs-keyword">while</span>(len[s]&lt;<span class="hljs-number">1e18</span>)s++; <br>	<span class="hljs-keyword">while</span>(q--)&#123;<br>		ll l,r;<br>		<span class="hljs-type">char</span> c;<br>		cin&gt;&gt;l&gt;&gt;r&gt;&gt;c;<br>		cout&lt;&lt;<span class="hljs-built_in">f</span>(s,r,c-<span class="hljs-string">&#x27;a&#x27;</span>)-<span class="hljs-built_in">f</span>(s,l<span class="hljs-number">-1</span>,c-<span class="hljs-string">&#x27;a&#x27;</span>)&lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -458,20 +468,20 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>Author</div>
           <div>ywrow</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
+          <div>Posted on</div>
           <div>2026年3月23日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>Licensed under</div>
           <div>
             
               
@@ -503,7 +513,7 @@
                     
                       <a href="/2026/03/16/ABC449C-Comfortable-Distance/" title="ABC449C-Comfortable-Distance">
                         <span class="hidden-mobile">ABC449C-Comfortable-Distance</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -524,7 +534,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -586,7 +596,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -594,7 +604,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -887,7 +897,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>
