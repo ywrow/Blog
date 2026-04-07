@@ -19,16 +19,16 @@
   <meta name="author" content="ywrow">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ODT 学习笔记  简介 ODT(old drive tree)，又名珂朵莉树，是一种暴力的数据结构，可以解决区间推平操作的一类题目，举个例子，就是把一个序列中 [l,r][l,r][l,r] 这一个区间的数都修改为 xxx ，当然，可以用线段树完成，但是如果 l,rl,rl,r 足够大，线段树用不了，而且数据是随机的，就可以用珂朵莉树。  原理  定义 执行推平操作之后，只要推平的区域大于1，">
+    <meta name="description" content="ODT 学习笔记简介ODT(old drive tree)，又名珂朵莉树，是一种暴力的数据结构，可以解决区间推平操作的一类题目，举个例子，就是把一个序列中 $[l,r]$ 这一个区间的数都修改为 $x$ ，当然，可以用线段树完成，但是如果 $l,r$ 足够大，线段树用不了，而且数据是随机的，就可以用珂朵莉树。 原理定义执行推平操作之后，只要推平的区域大于1，就一定会出现一个区间是相同的数字，珂朵莉">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ODT学习笔记">
 <meta property="og:url" content="https://ywrow.github.io/2026/04/06/ODT-study-notes/index.html">
 <meta property="og:site_name" content="Lins&#39; Blog">
-<meta property="og:description" content="ODT 学习笔记  简介 ODT(old drive tree)，又名珂朵莉树，是一种暴力的数据结构，可以解决区间推平操作的一类题目，举个例子，就是把一个序列中 [l,r][l,r][l,r] 这一个区间的数都修改为 xxx ，当然，可以用线段树完成，但是如果 l,rl,rl,r 足够大，线段树用不了，而且数据是随机的，就可以用珂朵莉树。  原理  定义 执行推平操作之后，只要推平的区域大于1，">
+<meta property="og:description" content="ODT 学习笔记简介ODT(old drive tree)，又名珂朵莉树，是一种暴力的数据结构，可以解决区间推平操作的一类题目，举个例子，就是把一个序列中 $[l,r]$ 这一个区间的数都修改为 $x$ ，当然，可以用线段树完成，但是如果 $l,r$ 足够大，线段树用不了，而且数据是随机的，就可以用珂朵莉树。 原理定义执行推平操作之后，只要推平的区域大于1，就一定会出现一个区间是相同的数字，珂朵莉">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ywrow.ccto.top/picture/study/odt1.jpg">
 <meta property="article:published_time" content="2026-04-06T10:47:30.000Z">
-<meta property="article:modified_time" content="2026-04-07T01:43:17.178Z">
+<meta property="article:modified_time" content="2026-04-07T01:45:15.731Z">
 <meta property="article:author" content="ywrow">
 <meta property="article:tag" content="study-notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -306,19 +306,19 @@
             <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-search"></i>
-                <span>Buscar</span>
+                <span>Search</span>
               </div>
             </a>
           </div>
         
         
           <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
-               data-label-light="Claro"
-               data-label-dark="Oscuro">
+               data-label-light="Light"
+               data-label-dark="Dark">
             <a href="javascript:;" aria-label="Color Toggle">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
-                <span id="mobile-color-toggle-label">Oscuro</span>
+                <span id="mobile-color-toggle-label">Dark</span>
               </div>
             </a>
           </div>
@@ -360,7 +360,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k palabras
+          1.6k words
         
       </span>
     
@@ -371,7 +371,7 @@
         
         
         
-          21 minutos
+          20 mins
         
       </span>
     
@@ -415,26 +415,24 @@
             
               <div class="markdown-body">
                 
-                <h2 id="odt-学习笔记"><a class="markdownIt-Anchor" href="#odt-学习笔记"></a> ODT 学习笔记</h2>
-<h3 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h3>
-<p><strong>ODT(old drive tree)</strong>，又名<strong>珂朵莉树</strong>，是一种暴力的数据结构，可以解决<strong>区间推平操作</strong>的一类题目，举个例子，就是把一个序列中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 这一个区间的数都修改为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span> ，当然，可以用线段树完成，但是如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo separator="true">,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l,r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 足够大，线段树用不了，而且数据是随机的，就可以用珂朵莉树。</p>
-<h3 id="原理"><a class="markdownIt-Anchor" href="#原理"></a> 原理</h3>
-<h4 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h4>
-<p>执行推平操作之后，只要推平的区域大于1，就一定会出现一个区间是相同的数字，珂朵莉树就是用set维护这一个区间的一种数据结构</p>
-<p><img src="https://ywrow.ccto.top/picture/study/odt1.jpg" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p>这张图就可以发现，可以把 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">;</mo><mn>3</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">;</mo><mn>6</mn><mo separator="true">,</mo><mn>6</mn><mo separator="true">;</mo><mn>7</mn><mo separator="true">,</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">1,2;3,5;6,6;7,9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">6</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">9</span></span></span></span> 分别存入珂朵莉树，这样代码就可以写出</p>
+                <h2 id="ODT-学习笔记"><a href="#ODT-学习笔记" class="headerlink" title="ODT 学习笔记"></a>ODT 学习笔记</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>ODT(old drive tree)</strong>，又名<strong>珂朵莉树</strong>，是一种暴力的数据结构，可以解决<strong>区间推平操作</strong>的一类题目，举个例子，就是把一个序列中 $[l,r]$ 这一个区间的数都修改为 $x$ ，当然，可以用线段树完成，但是如果 $l,r$ 足够大，线段树用不了，而且数据是随机的，就可以用珂朵莉树。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>执行推平操作之后，只要推平的区域大于1，就一定会出现一个区间是相同的数字，珂朵莉树就是用set维护这一个区间的一种数据结构</p>
+<p><img src="https://ywrow.ccto.top/picture/study/odt1.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>这张图就可以发现，可以把 $1,2;3,5;6,6;7,9$ 分别存入珂朵莉树，这样代码就可以写出</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>&#123;<br>	<span class="hljs-type">int</span> l,r;										<span class="hljs-comment">//这里表示这个区间是存储l~r的值</span><br>	<span class="hljs-keyword">mutable</span> <span class="hljs-type">int</span> v;									<span class="hljs-comment">//这个值为多少</span><br>	<span class="hljs-built_in">node</span>(ll l,ll r=<span class="hljs-number">0</span>,ll v=<span class="hljs-number">0</span>):<span class="hljs-built_in">l</span>(l),<span class="hljs-built_in">r</span>(r),<span class="hljs-built_in">v</span>(v)&#123;&#125;<br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt;(<span class="hljs-type">const</span> node &amp;a)<span class="hljs-type">const</span>&#123;			<span class="hljs-comment">//让set按左节点左到右排序</span><br>		<span class="hljs-keyword">return</span> l&lt;a.l;<br>	&#125;<br>&#125;;<br>set&lt;node&gt;s;<br></code></pre></td></tr></table></figure>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 摘自oiwiki">mutable 的意思是「可变的」，让我们可以在后面的操作中修改 v 的值．在 C++ 中，mutable 是为了突破 const 的限制而设置的．被 mutable 修饰的变量（mutable 只能用于修饰类中的非静态数据成员），将永远处于可变的状态，即使在一个 const 函数中．<br><br>这意味着，我们可以直接修改已经插入 set 的元素的 v 值，而不用将该元素取出后重新加入 set．<br></code></pre></td></tr></table></figure>
-<h3 id="拆分"><a class="markdownIt-Anchor" href="#拆分"></a> 拆分</h3>
-<p>如果要对一段区间进行赋值，那及其有可能需要把一个区间拆开，于是可以定义一个函数，用二分找到这个值处于哪一个迭代器，删除这一个迭代器，再删除，建立两个新的值，就相当于拆分。</p>
+
+<h3 id="拆分"><a href="#拆分" class="headerlink" title="拆分"></a>拆分</h3><p>如果要对一段区间进行赋值，那及其有可能需要把一个区间拆开，于是可以定义一个函数，用二分找到这个值处于哪一个迭代器，删除这一个迭代器，再删除，建立两个新的值，就相当于拆分。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">split</span><span class="hljs-params">(<span class="hljs-type">int</span> pos)</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> it=s.<span class="hljs-built_in">lower_bound</span>(<span class="hljs-built_in">node</span>(pos));<br>    <span class="hljs-keyword">if</span>(it!=s.<span class="hljs-built_in">end</span>()&amp;&amp;it-&gt;l==pos)<span class="hljs-keyword">return</span> it;<br>    it--;<br>    <span class="hljs-type">int</span> L=it-&gt;l,R=it-&gt;r;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> V=it-&gt;v;<br>    s.<span class="hljs-built_in">erase</span>(it);<br>    s.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">node</span>(L,pos<span class="hljs-number">-1</span>,V));<br>    <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">node</span>(pos,R,V)).first;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="修改"><a class="markdownIt-Anchor" href="#修改"></a> 修改</h4>
-<p>在set中删除其中所有被 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo separator="true">,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l,r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 覆盖的区域，再新建一个新的节点，即完成。</p>
+
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><p>在set中删除其中所有被 $l,r$ 覆盖的区域，再新建一个新的节点，即完成。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">assign</span><span class="hljs-params">(ll l,ll r,ll x)</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> itr=<span class="hljs-built_in">split</span>(r<span class="hljs-number">+1</span>),itl=<span class="hljs-built_in">split</span>(l);<br>	s.<span class="hljs-built_in">erase</span>(itl,itr);<br>    s.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">node</span>(l,r,x));<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="修改-2"><a class="markdownIt-Anchor" href="#修改-2"></a> 修改</h4>
-<p>同理，找到其中左节点和右节点，依次遍历其中的所有结点，给每一个的值都与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span> 进行操作。</p>
-<p>其中有一个点需要注意，它需要遍历每个结点的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> ，并把它们加上 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span> ，如果前面结构体没有 <code>mutable</code> ，这里就会报一个<code>error: cannot assign to return value because function 'operator-&gt;' returns a const value</code>。</p>
+
+<h4 id="修改-1"><a href="#修改-1" class="headerlink" title="修改"></a>修改</h4><p>同理，找到其中左节点和右节点，依次遍历其中的所有结点，给每一个的值都与 $x$ 进行操作。</p>
+<p>其中有一个点需要注意，它需要遍历每个结点的 $v$ ，并把它们加上 $x$ ，如果前面结构体没有 <code>mutable</code> ，这里就会报一个<code>error: cannot assign to return value because function &#39;operator-&gt;&#39; returns a const value</code>。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(ll l,ll,r,ll x)</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> itr=<span class="hljs-built_in">split</span>(r<span class="hljs-number">+1</span>),itl=<span class="hljs-built_in">split</span>(l);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=itl;it!=itr;it++)&#123;<br>        it-&gt;v+=x;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">change</span><span class="hljs-params">(ll l,ll,r,ll x)</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> itr=<span class="hljs-built_in">split</span>(r<span class="hljs-number">+1</span>),itl=<span class="hljs-built_in">split</span>(l);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=itl;it!=itr;it++)&#123;<br>        it-&gt;v=x;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -465,26 +463,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Autor</div>
+          <div>Author</div>
           <div>ywrow</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Publicado el</div>
+          <div>Posted on</div>
           <div>2026年4月6日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Licencia bajo</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Atribución">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
@@ -500,6 +498,23 @@
 
 
               
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/04/04/ABC452E-You-WILL-Like-Sigma-Problem/" title="ABC452E You WILL Like Sigma Problem">
+                        <span class="hidden-mobile">ABC452E You WILL Like Sigma Problem</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
 
             
@@ -514,7 +529,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Tabla de Contenidos</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -576,7 +591,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Buscar</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -584,7 +599,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Palabra clave</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -877,7 +892,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">El blog funciona mejor con JavaScript habilitado</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>
