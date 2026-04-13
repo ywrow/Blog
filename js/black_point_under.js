@@ -7,7 +7,7 @@
     }
     function l(){
         var i=j("script"),w=i.length,v=i[w-1];
-        return{l:w,z:o(v,"zIndex",-1),o:o(v,"opacity",0.5),c:o(v,"color","0,0,0"),n:o(v,"count",1000)}//最后一个参数是粒子数量，默认99
+        return{l:w,z:o(v,"zIndex",-1),o:o(v,"opacity",0.5),c:o(v,"color","0,0,0"),n:o(v,"count",145)}//最后一个参数是粒子数量，默认99
     }
     function k(){
         r=u.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,n=u.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
