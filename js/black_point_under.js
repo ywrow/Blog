@@ -7,7 +7,7 @@
     }
     function l(){
         var i=j("script"),w=i.length,v=i[w-1];
-        return{l:w,z:o(v,"zIndex",-1),o:o(v,"opacity",0.5),c:o(v,"color","0,0,0"),n:o(v,"count",145)}//最后一个参数是粒子数量，默认99
+        return{l:w,z:o(v,"zIndex",-1),o:o(v,"opacity",0.5),c:o(v,"color","0,0,0"),n:o(v,"count",145)}//最后一个参数是粒子数
     }
     function k(){
         r=u.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,n=u.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
@@ -30,7 +30,7 @@
     var u=document.createElement("canvas"),s=l(),c="c_n"+s.l,e=u.getContext("2d"),r,n,m=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(i){
         window.setTimeout(i,1000/45)
     },a=Math.random,f={
-        x:null,y:null,max:20000//最后一个是与鼠标的连线距离，默认20000
+        x:null,y:null,max:20000//最后一个是与鼠标的连线距离
     };
     u.id=c;u.style.cssText="position:fixed;top:0;left:0;z-index:"+s.z+";opacity:"+s.o;
     j("body")[0].appendChild(u);
